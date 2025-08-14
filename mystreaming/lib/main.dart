@@ -83,7 +83,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String _apiKey = "6a7de593";
+  final String _apiKey = "" // Coloque a chave aqui entre as aspas;
   final TextEditingController _searchController = TextEditingController();
   List<Media> _searchResults = [];
   final List<String> _statuses = ['Assistido', 'Não Assistido', 'Pretendo Assistir'];
