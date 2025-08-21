@@ -114,17 +114,19 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _addMedia(Media media) {
-    final box = Hive.box<Media>('myMediaBox');
-    bool exists = box.values.any((m) => m.imdbID == media.imdbID);
-    if (!exists) {
-      box.add(media);
-      _showSnackbar('"${media.title}" adicionado(a) à sua lista!');
-    } else {
-      _showSnackbar('"${media.title}" já está na sua lista.');
-    }
-    setState(() {});
+void _addMedia(Media media) {
+  final box = Hive.box<Media>('myMediaBox');
+  bool exists = box.values.any((m) => m.imdbID == media.imdbID);
+  if (!exists) {
+    box.add(media);
+    _showSnackbar('"${media.title}" adicionado(a) à sua lista!');
+    setState(() {
+      _searchResults = [];
+    });
+  } else {
+    _showSnackbar('"${media.title}" já está na sua lista.');
   }
+}
 
   void _showSnackbar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
